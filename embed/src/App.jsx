@@ -21,7 +21,7 @@ export default function App() {
 
   const positionClasses = {
     "bottom-left": "allm-bottom-0 allm-left-0 allm-ml-4",
-    "bottom-right": "allm-bottom-12 allm-right-0 allm-mr-4",
+    "bottom-right": "allm-bottom-16 allm-right-0 allm-mr-4",
     "top-left": "allm-top-0 allm-left-0 allm-ml-4 allm-mt-4",
     "top-right": "allm-top-0 allm-right-0 allm-mr-4 allm-mt-4",
     "center": "allm-top-1/2 allm-left-1/2 allm-transform allm-translate-x-[-50%] allm-translate-y-[-50%]"
