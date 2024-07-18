@@ -8,13 +8,14 @@ import ConnectorOption from "./ConnectorOption";
 import WebsiteDepthOptions from "./Connectors/WebsiteDepth";
 
 export const DATA_CONNECTORS = {
-  "youtube-transcript": {
+    "youtube-transcript": {
     name: "YouTube Transcript",
     image: ConnectorImages.youtube,
     description:
       "Import the transcription of an entire YouTube video from a link.",
     options: <YoutubeOptions />,
   },
+  
 };
 
 export default function DataConnectors() {
@@ -28,6 +29,21 @@ export default function DataConnectors() {
   return (
     <div className="flex upload-modal -mt-10 relative min-h-[80vh] w-[70vw]">
       <div className="w-full p-4 top-0 z-20">
+        <div className="w-full flex items-center sticky top-0 z-50">
+          <MagnifyingGlass
+            size={16}
+            weight="bold"
+            className="absolute left-4 z-30 text-white"
+          />
+          <input
+            type="text"
+            placeholder="Search data connectors"
+            className="border-none bg-zinc-600 z-20 pl-10 h-[38px] rounded-full w-full px-4 py-1 text-sm border-2 border-slate-300/40 outline-none focus:outline-primary-button active:outline-primary-button outline-none text-white"
+            autoComplete="off"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
         <div className="mt-2 flex flex-col gap-y-2">
           {filteredConnectors.length > 0 ? (
             filteredConnectors.map((slug, index) => (
