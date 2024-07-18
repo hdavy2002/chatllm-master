@@ -27,7 +27,7 @@ export default function App() {
     "center": "allm-top-1/2 allm-left-1/2 allm-transform allm-translate-x-[-50%] allm-translate-y-[-50%]"
   };
 
-  const position = embedSettings.position || "center";
+  const position = embedSettings.position || "bottom-right";
   const windowWidth = embedSettings.windowWidth ?? "400px";
   const windowHeight = embedSettings.windowHeight ?? "700px";
 
