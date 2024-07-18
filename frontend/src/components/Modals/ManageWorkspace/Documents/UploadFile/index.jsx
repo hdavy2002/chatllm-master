@@ -79,7 +79,7 @@ export default function UploadFile({
               Click to upload or drag and drop
             </div>
             <div className="text-white text-opacity-60 text-xs font-medium py-1">
-              supports .txt files, CSV and PDF's only!
+            Support's (PDF, TXT, DOCX only)
             </div>
           </div>
         ) : (
