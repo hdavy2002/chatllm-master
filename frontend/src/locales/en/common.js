@@ -67,25 +67,23 @@ const TRANSLATIONS = {
 
   welcomeMessage: {
     part1:
-      "Welcome to AnythingLLM, AnythingLLM is an open-source AI tool by Mintplex Labs that turns anything into a trained chatbot you can query and chat with. AnythingLLM is a BYOK (bring-your-own-keys) software so there is no subscription, fee, or charges for this software outside of the services you want to use with it.",
-    part2:
-      "AnythingLLM is the easiest way to put powerful AI products like OpenAi, GPT-4, LangChain, PineconeDB, ChromaDB, and other services together in a neat package with no fuss to increase your productivity by 100x.",
-    part3:
-      "AnythingLLM can run totally locally on your machine with little overhead you wont even notice it's there! No GPU needed. Cloud and on-premises installation is available as well.\nThe AI tooling ecosystem gets more powerful everyday. AnythingLLM makes it easy to use.",
-    githubIssue: "Create an issue on Github",
+      "Welcome to ChatLTT! ChatLTT is an AI tool that helps influencers connect with their fans.",
+    
     user1: "How do I get started?!",
-    part4:
-      "It's simple. All collections are organized into buckets we call \"Workspaces\". Workspaces are buckets of files, documents, images, PDFs, and other files which will be transformed into something LLM's can understand and use in conversation.\n\nYou can add and remove files at anytime.",
-    createWorkspace: "Create your first workspace",
-    user2:
-      "Is this like an AI dropbox or something? What about chatting? It is a chatbot isn't it?",
-    part5:
-      "AnythingLLM is more than a smarter Dropbox.\n\nAnythingLLM offers two ways of talking with your data:\n\n<i>Query:</i> Your chats will return data or inferences found with the documents in your workspace it has access to. Adding more documents to the Workspace make it smarter! \n\n<i>Conversational:</i> Your documents + your on-going chat history both contribute to the LLM knowledge at the same time. Great for appending real-time text-based info or corrections and misunderstandings the LLM might have. \n\nYou can toggle between either mode \n<i>in the middle of chatting!</i>",
+   
+    part2:
+      "It's simple. Click on the Hub assigned to you. It's in the left menu on the desktop, and if you are in mobile view, pull the menu down. Once you click on the Hub, you can start chatting with the default Hub or create your own and rename it. You can create multiple hubs to keep track of your conversations.",
+    
+    user2: "Awesome. So what can I chat about?",
+    
+    part3:
+      "ChatLTT is pretty smart. Fans generally talk about the YouTube videos they have seen. However, your influencer can train the AI to talk about other things. For example, a doctor can advise his fans on diabetic cures and precautions to take, while a food blogger can train the AI to give you her secret recipes. Do read the influencers' page at Chatltt.com to understand what their AI is trained upon.",
+    
     user3: "Wow, this sounds amazing, let me try it out already!",
-    part6: "Have Fun!",
-    starOnGithub: "Star on GitHub",
-    contact: "Contact Mintplex Labs",
+    
+    part4: "Have fun!",
   },
+
 
   "new-workspace": {
     title: "New Workspace",
