@@ -117,7 +117,7 @@ const TRANSLATIONS = {
       add: "Add new message",
       save: "Save Messages",
       heading: "Explain to me",
-      body: "the benefits of AnythingLLM",
+      body: "the benefits of ChatLTT",
     },
     pfp: {
       title: "Assistant Profile Image",
@@ -320,7 +320,7 @@ const TRANSLATIONS = {
       system: "system",
       user: "user",
       message: "message",
-      assistant: "AnythingLLM Chat Assistant",
+      assistant: "ChatLTT Chat Assistant",
       "double-click": "Double click to edit...",
       save: "Save Messages",
     },
