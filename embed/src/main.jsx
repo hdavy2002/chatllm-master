@@ -21,7 +21,7 @@ export const embedderSettings = {
   settings: scriptSettings,
   stylesSrc: parseStylesSrc(document?.currentScript?.src),
   USER_STYLES: {
-    msgBg: scriptSettings?.userBgColor ?? "#3DBEF5",
+    msgBg: scriptSettings?.userBgColor ?? "#FF5757",
     base: `allm-text-white allm-rounded-t-[18px] allm-rounded-bl-[18px] allm-rounded-br-[4px] allm-mx-[20px]`,
   },
   ASSISTANT_STYLES: {
