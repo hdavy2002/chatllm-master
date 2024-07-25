@@ -113,7 +113,16 @@ const ModalTabSwitcher = ({ selectedTab, setSelectedTab }) => {
         >
           Documents
         </button>
-        
+        <button
+          onClick={() => setSelectedTab("dataConnectors")}
+          className={`px-4 py-2 rounded-[8px] font-semibold text-white hover:bg-switch-selected hover:bg-opacity-60 ${
+            selectedTab === "dataConnectors"
+              ? "bg-switch-selected shadow-md font-bold"
+              : "bg-sidebar-button text-white/20 font-medium hover:text-white"
+          }`}
+        >
+          Data Connectors
+        </button>
       </div>
     </div>
   );
