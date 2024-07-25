@@ -68,20 +68,17 @@ const TRANSLATIONS = {
   welcomeMessage: {
     part1:
       "Welcome to Chat LTT",
+
+    user1:
+      "What is Chat LTT? It's a chatbot isn't it?",
+
+
     part2:
-      "Chat LTT is the easiest way to talk to your influencers AI.",
-    part3:
-      "Chat LTT runs in a private cloud based container and all your conversations is stored locally and privately. When an influencer deletes an account with us. We delete the container and all the data within. We do not pass your data to third party for training etc.",
-    user1: "How do I get started?!",
-    part4:
-      "It's simple. All chats are organized into buckets we call \"Workspaces\". Click on the Workspace assigned to you and you can choose the default thread to start chatting. You can create multiple threads and use those to store diffrent conversations or topics. If you are on the phone, then pull the menu down and choose your Workspace.",
-    user2:
-      "What about chatting? It is a chatbot isn't it?",
-    part5:
       "Well, Chat LTT or (Chat with Large Trained Transformers) is trained by your influencer to give you their channel related info. You can talk to ChatLTT as you would do normally with other chatbots. Each ChatLTT instance is created by diffrent influencer and each LTT goes through a diffrent set of training.",
-    user3: "Wow, this sounds amazing, let me try it out already!",
-    part6: "Have Fun!",
-  },
+
+    },
+
+ 
 
   "new-workspace": {
     title: "New Workspace",
