@@ -79,7 +79,7 @@ export default function UploadFile({
               Click to upload or drag and drop
             </div>
             <div className="text-white text-opacity-60 text-xs font-medium py-1">
-            Support's (PDF, TXT, DOCX only)
+              Support's (PDF, TXT, DOCX only)
             </div>
           </div>
         ) : (
@@ -101,11 +101,6 @@ export default function UploadFile({
             ))}
           </div>
         )}
-      </div>
-      <div className="mt-6 text-center text-white text-opacity-80 text-xs font-medium w-[560px]">
-        These files will be uploaded to the document processor running on this
-        ChatLTT instance. These files are not sent or shared with a third
-        party.
       </div>
     </div>
   );
