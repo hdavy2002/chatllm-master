@@ -92,7 +92,7 @@ export default function UploadFile({
             </div>
             <div className="text-white text-opacity-60 text-xs font-medium py-1 px-20 text-center">
               We can't upload your files right now because the document
-              processor is nusy or offline. Please try again later.
+              processor is busy or offline. Please try again later.
             </div>
           </div>
         ) : files.length === 0 ? (
@@ -147,8 +147,8 @@ export default function UploadFile({
       </form>
       <div className="mt-6 text-center text-white text-opacity-80 text-xs font-medium w-[560px]">
         These files will be uploaded to the document processor running on this
-        ChatLTTinstance. These files are not sent or shared with a third
-        party. Nor do we use your data to train our other LTT's.
+        ChatLTT instance. These files are not sent or shared with a third
+        party.
       </div>
     </div>
   );
