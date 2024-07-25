@@ -92,7 +92,7 @@ export default function UploadFile({
             </div>
             <div className="text-white text-opacity-60 text-xs font-medium py-1 px-20 text-center">
               We can't upload your files right now because the document
-              processor is busy or offline. Please try again later.
+              processor is offline. Please try again later.
             </div>
           </div>
         ) : files.length === 0 ? (
@@ -102,7 +102,7 @@ export default function UploadFile({
               Click to upload or drag and drop
             </div>
             <div className="text-white text-opacity-60 text-xs font-medium py-1">
-              supports text files, csv's and spreadsheets!
+              supports text files, csv's, spreadsheets, audio files, and more!
             </div>
           </div>
         ) : (
