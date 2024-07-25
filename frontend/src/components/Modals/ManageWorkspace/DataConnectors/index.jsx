@@ -1,11 +1,7 @@
 import ConnectorImages from "@/components/DataConnectorOption/media";
-import { MagnifyingGlass } from "@phosphor-icons/react";
-import GithubOptions from "./Connectors/Github";
-import YoutubeOptions from "./Connectors/Youtube";
-import ConfluenceOptions from "./Connectors/Confluence";
 import { useState } from "react";
 import ConnectorOption from "./ConnectorOption";
-import WebsiteDepthOptions from "./Connectors/WebsiteDepth";
+import YoutubeOptions from "./Connectors/Youtube";
 
 export const DATA_CONNECTORS = {
   "youtube-transcript": {
@@ -18,34 +14,23 @@ export const DATA_CONNECTORS = {
 };
 
 export default function DataConnectors() {
-  const [selectedConnector, setSelectedConnector] = useState("github");
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const filteredConnectors = Object.keys(DATA_CONNECTORS).filter((slug) =>
-    DATA_CONNECTORS[slug].name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const [selectedConnector, setSelectedConnector] = useState("youtube-transcript");
 
   return (
     <div className="flex upload-modal -mt-10 relative min-h-[80vh] w-[70vw]">
       <div className="w-full p-4 top-0 z-20">
         <div className="mt-2 flex flex-col gap-y-2">
-          {filteredConnectors.length > 0 ? (
-            filteredConnectors.map((slug, index) => (
-              <ConnectorOption
-                key={index}
-                slug={slug}
-                selectedConnector={selectedConnector}
-                setSelectedConnector={setSelectedConnector}
-                image={DATA_CONNECTORS[slug].image}
-                name={DATA_CONNECTORS[slug].name}
-                description={DATA_CONNECTORS[slug].description}
-              />
-            ))
-          ) : (
-            <div className="text-white text-center mt-4">
-              No data connectors found.
-            </div>
-          )}
+          {Object.entries(DATA_CONNECTORS).map(([slug, connector]) => (
+            <ConnectorOption
+              key={slug}
+              slug={slug}
+              selectedConnector={selectedConnector}
+              setSelectedConnector={setSelectedConnector}
+              image={connector.image}
+              name={connector.name}
+              description={connector.description}
+            />
+          ))}
         </div>
       </div>
       <div className="xl:block hidden absolute left-1/2 top-0 bottom-0 w-[0.5px] bg-white/20 -translate-x-1/2"></div>
