@@ -152,12 +152,7 @@ const TRANSLATIONS = {
     },
     mode: {
       title: "Chat mode",
-      chat: {
-        title: "Chat",
-        "desc-start": "will provide answers with the LLM's general knowledge",
-        and: "and",
-        "desc-end": "document context that is found.",
-      },
+      
       query: {
         title: "Query",
         "desc-start": "will provide answers",
