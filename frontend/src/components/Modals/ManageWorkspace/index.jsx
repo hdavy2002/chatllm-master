@@ -45,7 +45,7 @@ const ManageWorkspace = ({ hideModal = noop, providedSlug = null }) => {
                 Editing "{workspace.name}"
               </h1>
               <p className="text-white mt-4">
-                Editing these settings are only available on a desktop device.
+                Sorry, Editing these settings are only available on a desktop device.
                 Please access this page on your desktop to continue.
               </p>
               <div className="mt-6 flex justify-end">
@@ -113,16 +113,7 @@ const ModalTabSwitcher = ({ selectedTab, setSelectedTab }) => {
         >
           Documents
         </button>
-        <button
-          onClick={() => setSelectedTab("dataConnectors")}
-          className={`px-4 py-2 rounded-[8px] font-semibold text-white hover:bg-switch-selected hover:bg-opacity-60 ${
-            selectedTab === "dataConnectors"
-              ? "bg-switch-selected shadow-md font-bold"
-              : "bg-sidebar-button text-white/20 font-medium hover:text-white"
-          }`}
-        >
-          Data Connectors
-        </button>
+        
       </div>
     </div>
   );
