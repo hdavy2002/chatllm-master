@@ -1,14 +1,4 @@
 import React, { useEffect, useState } from "react";
-import {
-  GithubLogo,
-  GitMerge,
-  EnvelopeSimple,
-  Plus,
-} from "@phosphor-icons/react";
-import NewWorkspaceModal, {
-  useNewWorkspaceModal,
-} from "../Modals/NewWorkspace";
-import paths from "@/utils/paths";
 import { isMobile } from "react-device-detect";
 import { SidebarMobileHeader } from "../Sidebar";
 import ChatBubble from "../ChatBubble";
@@ -23,11 +13,6 @@ export default function DefaultChatContainer() {
   const [mockMsgs, setMockMessages] = useState([]);
   const { user } = useUser();
   const [fetchedMessages, setFetchedMessages] = useState([]);
-  const {
-    showing: showingNewWsModal,
-    showModal: showNewWsModal,
-    hideModal: hideNewWsModal,
-  } = useNewWorkspaceModal();
   const popMsg = !window.localStorage.getItem("anythingllm_intro");
   const { t } = useTranslation();
 
@@ -41,18 +26,11 @@ export default function DefaultChatContainer() {
 
   const MESSAGES = [
     <React.Fragment key="msg1">
-      <div
-        className={`flex justify-center items-end w-full ${AI_BACKGROUND_COLOR} md:mt-0 mt-[40px]`}
-      >
-        <div
-          className={`pt-10 pb-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}
-        >
+      <div className={`flex justify-center items-end w-full ${AI_BACKGROUND_COLOR} md:mt-0 mt-[40px]`}>
+        <div className={`pt-10 pb-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}>
           <div className="flex gap-x-5">
             <UserIcon user={{ uid: "system" }} role={"assistant"} />
-
-            <span
-              className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}
-            >
+            <span className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}>
               {t("welcomeMessage.part1")}
             </span>
           </div>
@@ -61,18 +39,11 @@ export default function DefaultChatContainer() {
     </React.Fragment>,
 
     <React.Fragment key="msg2">
-      <div
-        className={`flex justify-center items-end w-full ${AI_BACKGROUND_COLOR}`}
-      >
-        <div
-          className={`pb-4 pt-2 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}
-        >
+      <div className={`flex justify-center items-end w-full ${AI_BACKGROUND_COLOR}`}>
+        <div className={`pb-4 pt-2 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}>
           <div className="flex gap-x-5">
             <UserIcon user={{ uid: "system" }} role={"assistant"} />
-
-            <span
-              className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}
-            >
+            <span className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}>
               {t("welcomeMessage.part2")}
             </span>
           </div>
@@ -81,43 +52,24 @@ export default function DefaultChatContainer() {
     </React.Fragment>,
 
     <React.Fragment key="msg3">
-      <div
-        className={`flex justify-center items-end w-full ${AI_BACKGROUND_COLOR}`}
-      >
-        <div
-          className={`pt-2 pb-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}
-        >
+      <div className={`flex justify-center items-end w-full ${AI_BACKGROUND_COLOR}`}>
+        <div className={`pt-2 pb-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}>
           <div className="flex gap-x-5">
             <UserIcon user={{ uid: "system" }} role={"assistant"} />
-            <div>
-              <span
-                className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}
-              >
-                {t("welcomeMessage.part3")}
-              </span>
-              
-            </div>
+            <span className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}>
+              {t("welcomeMessage.part3")}
+            </span>
           </div>
         </div>
       </div>
     </React.Fragment>,
 
     <React.Fragment key="msg4">
-      <div
-        className={`flex justify-center items-end w-full ${USER_BACKGROUND_COLOR}`}
-      >
-        <div
-          className={`py-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}
-        >
+      <div className={`flex justify-center items-end w-full ${USER_BACKGROUND_COLOR}`}>
+        <div className={`py-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}>
           <div className="flex gap-x-5">
-            <UserIcon
-              user={{ uid: userFromStorage()?.username }}
-              role={"user"}
-            />
-
-            <span
-              className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}
-            >
+            <UserIcon user={{ uid: userFromStorage()?.username }} role={"user"} />
+            <span className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}>
               {t("welcomeMessage.user1")}
             </span>
           </div>
@@ -126,44 +78,24 @@ export default function DefaultChatContainer() {
     </React.Fragment>,
 
     <React.Fragment key="msg5">
-      <div
-        className={`flex justify-center items-end w-full ${AI_BACKGROUND_COLOR}`}
-      >
-        <div
-          className={`py-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}
-        >
+      <div className={`flex justify-center items-end w-full ${AI_BACKGROUND_COLOR}`}>
+        <div className={`py-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}>
           <div className="flex gap-x-5">
             <UserIcon user={{ uid: "system" }} role={"assistant"} />
-            <div>
-              <span
-                className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}
-              >
-                {t("welcomeMessage.part4")}
-              </span>
-
-              
-            </div>
+            <span className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}>
+              {t("welcomeMessage.part4")}
+            </span>
           </div>
         </div>
       </div>
     </React.Fragment>,
 
     <React.Fragment key="msg6">
-      <div
-        className={`flex justify-center items-end w-full ${USER_BACKGROUND_COLOR}`}
-      >
-        <div
-          className={`py-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}
-        >
+      <div className={`flex justify-center items-end w-full ${USER_BACKGROUND_COLOR}`}>
+        <div className={`py-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}>
           <div className="flex gap-x-5">
-            <UserIcon
-              user={{ uid: userFromStorage()?.username }}
-              role={"user"}
-            />
-
-            <span
-              className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}
-            >
+            <UserIcon user={{ uid: userFromStorage()?.username }} role={"user"} />
+            <span className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}>
               {t("welcomeMessage.user2")}
             </span>
           </div>
@@ -172,25 +104,12 @@ export default function DefaultChatContainer() {
     </React.Fragment>,
 
     <React.Fragment key="msg7">
-      <div
-        className={`flex justify-center items-end w-full ${AI_BACKGROUND_COLOR}`}
-      >
-        <div
-          className={`py-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}
-        >
+      <div className={`flex justify-center items-end w-full ${AI_BACKGROUND_COLOR}`}>
+        <div className={`py-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}>
           <div className="flex gap-x-5">
             <UserIcon user={{ uid: "system" }} role={"assistant"} />
-
-            <span
-              className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}
-            >
-              <Trans
-                i18nKey="welcomeMessage.part5"
-                components={{
-                  i: <i />,
-                  br: <br />,
-                }}
-              />
+            <span className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}>
+              <Trans i18nKey="welcomeMessage.part5" components={{ i: <i />, br: <br /> }} />
             </span>
           </div>
         </div>
@@ -198,21 +117,11 @@ export default function DefaultChatContainer() {
     </React.Fragment>,
 
     <React.Fragment key="msg8">
-      <div
-        className={`flex justify-center items-end w-full ${USER_BACKGROUND_COLOR}`}
-      >
-        <div
-          className={`py-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}
-        >
+      <div className={`flex justify-center items-end w-full ${USER_BACKGROUND_COLOR}`}>
+        <div className={`py-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}>
           <div className="flex gap-x-5">
-            <UserIcon
-              user={{ uid: userFromStorage()?.username }}
-              role={"user"}
-            />
-
-            <span
-              className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}
-            >
+            <UserIcon user={{ uid: userFromStorage()?.username }} role={"user"} />
+            <span className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}>
               {t("welcomeMessage.user3")}
             </span>
           </div>
@@ -221,25 +130,13 @@ export default function DefaultChatContainer() {
     </React.Fragment>,
 
     <React.Fragment key="msg9">
-      <div
-        className={`flex justify-center items-end w-full ${AI_BACKGROUND_COLOR}`}
-      >
-        <div
-          className={`py-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}
-        >
+      <div className={`flex justify-center items-end w-full ${AI_BACKGROUND_COLOR}`}>
+        <div className={`py-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}>
           <div className="flex gap-x-5">
             <UserIcon user={{ uid: "system" }} role={"assistant"} />
-            <div>
-              <span
-                className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}
-              >
-                {t("welcomeMessage.part6")}
-              </span>
-
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-4">
-                
-              </div>
-            </div>
+            <span className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}>
+              {t("welcomeMessage.part6")}
+            </span>
           </div>
         </div>
       </div>
@@ -296,7 +193,6 @@ export default function DefaultChatContainer() {
               </React.Fragment>
             );
           })}
-      {showingNewWsModal && <NewWorkspaceModal hideModal={hideNewWsModal} />}
     </div>
   );
 }
