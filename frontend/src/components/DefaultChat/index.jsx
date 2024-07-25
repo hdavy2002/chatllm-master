@@ -141,9 +141,7 @@ export default function DefaultChatContainer() {
                 {t("welcomeMessage.part4")}
               </span>
 
-              {(!user || user?.role !== "default") && (
-                
-              )}
+              
             </div>
           </div>
         </div>
