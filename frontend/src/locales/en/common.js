@@ -67,9 +67,9 @@ const TRANSLATIONS = {
 
   welcomeMessage: {
     part1:
-      "Welcome to ChatLTT, ChatLTT is an open-source AI tool by Mintplex Labs that turns anything into a trained chatbot you can query and chat with. AnythingLLM is a BYOK (bring-your-own-keys) software so there is no subscription, fee, or charges for this software outside of the services you want to use with it.",
+      "Welcome to ChatLTT, Chat LTT (Large Trained Transformers) is trained by your influencer to give you their channel related info. You can talk to ChatLTT as you would do normally with other chatbots. Each ChatLTT instance is created by diffrent influencer and each LTT goes through a diffrent set of training.",
     part2:
-      "AnythingLLM is the easiest way to put powerful AI products like OpenAi, GPT-4, LangChain, PineconeDB, ChromaDB, and other services together in a neat package with no fuss to increase your productivity by 100x.",
+      "To get started, click on the workspace assigned to you. If you do not see any workspace. Contact your Influener or us at support@chatltt.com.",
   },
 
   "new-workspace": {
