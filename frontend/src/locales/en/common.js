@@ -69,7 +69,7 @@ const TRANSLATIONS = {
     part1:
       "Welcome to ChatLTT, Chat LTT (Large Trained Transformers) is trained by your influencer to give you their channel related info. You can talk to ChatLTT as you would do normally with other chatbots. Each ChatLTT instance is created by diffrent influencer and each LTT goes through a diffrent set of training.",
     part2:
-      "To get started, click on the workspace assigned to you. If you do not see any workspace. Contact your Influener or us at support@chatltt.com.",
+      "To get started, click on the workspace assigned to you. If you do not see any workspace. Contact your Influencer or us at support@chatltt.com.",
   },
 
   "new-workspace": {
