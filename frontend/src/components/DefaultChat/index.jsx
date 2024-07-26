@@ -193,6 +193,7 @@ export default function DefaultChatContainer() {
               </React.Fragment>
             );
           })}
+          {showingNewWsModal && <NewWorkspaceModal hideModal={hideNewWsModal} />}
     </div>
   );
 }
