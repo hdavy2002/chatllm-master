@@ -67,9 +67,9 @@ const TRANSLATIONS = {
 
   welcomeMessage: {
     part1:
-      "Welcome to ChatLTT, Chat LTT (Large Trained Transformers) is trained by your influencer to give you their channel related info. You can talk to ChatLTT as you would do normally with other chatbots. Each ChatLTT instance is created by diffrent influencer and each LTT goes through a diffrent set of training.",
+      "Welcome to ChatLTT! ChatLTT (Large Trained Transformers) is trained by your influencer. The idea behind this is that instead of leaving comments and waiting for an answer, you can interact with the influencer's knowledge immediately. Influencers can feed their AI with directions to specific places, links to products, general stock advice, cooking recipes, and more. You can talk to ChatLTT just like you would with any other chatbot. Each ChatLTT instance is created by a different influencer and goes through a unique set of training. This is a private hosting environment, and conversations never leave this instance. When the influencer deletes this account, all data is permanently deleted. You also have the option to delete all your chats via the reset agent located in your chatbox.",
     part2:
-      "To get started, click on the workspace assigned to you. If you do not see any workspace. Contact your Influencer or us at support@chatltt.com.",
+      "To get started, click on the workspace assigned to you. (Left side on desktop and top menu on mobile). If you do not see any workspace. Contact your Influencer or us at support@chatltt.com. Its probably the system forgot to add your name. Not to worry.",
   },
 
   "new-workspace": {
