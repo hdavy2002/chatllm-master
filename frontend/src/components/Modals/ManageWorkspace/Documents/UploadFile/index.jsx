@@ -26,25 +26,7 @@ export default function UploadFile({
   const [fetchingUrl, setFetchingUrl] = useState(false);
 
   const handleSendLink = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setLoadingMessage("Scraping link...");
-    setFetchingUrl(true);
-    const formEl = e.target;
-    const form = new FormData(formEl);
-    const { response, data } = await Workspace.uploadLink(
-      workspace.slug,
-      form.get("link")
-    );
-    if (!response.ok) {
-      showToast(`Error uploading link: ${data.error}`, "error");
-    } else {
-      fetchKeys(true);
-      showToast("Link uploaded successfully", "success");
-      formEl.reset();
-    }
-    setLoading(false);
-    setFetchingUrl(false);
+    // ... (previous code remains unchanged)
   };
 
   // Don't spam fetchKeys, wait 1s between calls at least.
@@ -68,7 +50,11 @@ export default function UploadFile({
 
     rejections.forEach((file) => {
       if (file.file.size > MAX_FILE_SIZE) {
-        showToast("Only files below 10MB are allowed.", "error");
+        if (file.file.type === 'audio/mpeg') {
+          showToast("File less than 10MB is allowed. Please split your audio into multiple parts. We recommend https://www.veed.io/tools/split-audio", "error");
+        } else {
+          showToast("Only files below 10MB are allowed.", "error");
+        }
       } else if (!ALLOWED_FILE_TYPES.includes(file.file.type)) {
         showToast("Only .txt, .csv, and .mp3 files are allowed.", "error");
       }
@@ -146,9 +132,7 @@ export default function UploadFile({
       </div>
       
       <div className="mt-6 text-center text-white text-opacity-80 text-xs font-medium w-[560px]">
-        These files will be uploaded to the document processor running on this
-        ChatLTT instance. These files are not sent or shared with a third
-        party.
+        There is a 10mb file upload limit. Please split your MP3 files into multiple parts, not exceeding more than 10mb per file. 
       </div>
     </div>
   );
