@@ -8,7 +8,7 @@ import FileUploadProgress from "./FileUploadProgress";
 import Workspace from "../../../../../models/workspace";
 import debounce from "lodash.debounce";
 
-const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB in bytes
+const MAX_FILE_SIZE = 20 * 1024 * 1024; // 20MB in bytes
 const ALLOWED_FILE_TYPES = [
   'text/plain',     // .txt
   'text/csv',       // .csv
@@ -52,9 +52,9 @@ export default function UploadFile({
     rejections.forEach((file) => {
       if (file.file.size > MAX_FILE_SIZE) {
         if (file.file.type === 'audio/mpeg') {
-          showToast("File less than 50MB is allowed. Please split your audio into multiple parts. We recommend https://www.veed.io/tools/split-audio", "error");
+          showToast("File less than 20MB is allowed. Please split your audio into multiple parts. We recommend https://www.veed.io/tools/split-audio", "error");
         } else {
-          showToast("Only files below 50MB are allowed.", "error");
+          showToast("Only files below 20MB are allowed.", "error");
         }
       } else if (!ALLOWED_FILE_TYPES.includes(file.file.type)) {
         showToast("Only .txt, .csv, .mp3, and .pdf files are allowed.", "error");
@@ -109,7 +109,7 @@ export default function UploadFile({
               Click to upload or drag and drop
             </div>
             <div className="text-white text-opacity-60 text-xs font-medium py-1">
-              Only .txt, .csv, .mp3, and .pdf files up to 50MB are supported
+              Only .txt, .csv, .mp3, and .pdf files up to 20MB are supported
             </div>
           </div>
         ) : (
