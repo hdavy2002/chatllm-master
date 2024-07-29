@@ -8,6 +8,13 @@ import FileUploadProgress from "./FileUploadProgress";
 import Workspace from "../../../../../models/workspace";
 import debounce from "lodash.debounce";
 
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB in bytes
+const ALLOWED_FILE_TYPES = [
+  'text/plain',     // .txt
+  'text/csv',       // .csv
+  'audio/mpeg',     // .mp3
+];
+
 export default function UploadFile({
   workspace,
   fetchKeys,
@@ -42,24 +49,30 @@ export default function UploadFile({
 
   // Don't spam fetchKeys, wait 1s between calls at least.
   const handleUploadSuccess = debounce(() => fetchKeys(true), 1000);
-  const handleUploadError = (_msg) => null; // stubbed.
+  const handleUploadError = (msg) => showToast(msg, "error");
 
   const onDrop = async (acceptedFiles, rejections) => {
-    const newAccepted = acceptedFiles.map((file) => {
-      return {
-        uid: v4(),
-        file,
-      };
-    });
-    const newRejected = rejections.map((file) => {
-      return {
-        uid: v4(),
-        file: file.file,
-        rejected: true,
-        reason: file.errors[0].code,
-      };
-    });
+    const newAccepted = acceptedFiles.map((file) => ({
+      uid: v4(),
+      file,
+    }));
+
+    const newRejected = rejections.map((file) => ({
+      uid: v4(),
+      file: file.file,
+      rejected: true,
+      reason: file.errors[0].code,
+    }));
+
     setFiles([...newAccepted, ...newRejected]);
+
+    rejections.forEach((file) => {
+      if (file.file.size > MAX_FILE_SIZE) {
+        showToast("Only files below 10MB are allowed.", "error");
+      } else if (!ALLOWED_FILE_TYPES.includes(file.file.type)) {
+        showToast("Only .txt, .csv, and .mp3 files are allowed.", "error");
+      }
+    });
   };
 
   useEffect(() => {
@@ -73,6 +86,12 @@ export default function UploadFile({
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     disabled: !ready,
+    maxSize: MAX_FILE_SIZE,
+    accept: {
+      'text/plain': ['.txt'],
+      'text/csv': ['.csv'],
+      'audio/mpeg': ['.mp3'],
+    },
   });
 
   return (
@@ -102,7 +121,7 @@ export default function UploadFile({
               Click to upload or drag and drop
             </div>
             <div className="text-white text-opacity-60 text-xs font-medium py-1">
-              supports text files, csv's, spreadsheets, audio files, and more!
+              Only .txt, .csv, and .mp3 files up to 10MB are supported
             </div>
           </div>
         ) : (
