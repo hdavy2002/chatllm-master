@@ -8,14 +8,6 @@ import FileUploadProgress from "./FileUploadProgress";
 import Workspace from "../../../../../models/workspace";
 import debounce from "lodash.debounce";
 
-const MAX_FILE_SIZE = 20 * 1024 * 1024; // 20MB in bytes
-const ALLOWED_FILE_TYPES = [
-  'text/plain',     // .txt
-  'text/csv',       // .csv
-  'audio/mpeg',     // .mp3
-  'application/pdf' // .pdf
-];
-
 export default function UploadFile({
   workspace,
   fetchKeys,
@@ -27,39 +19,47 @@ export default function UploadFile({
   const [fetchingUrl, setFetchingUrl] = useState(false);
 
   const handleSendLink = async (e) => {
-    // ... (previous code remains unchanged)
+    e.preventDefault();
+    setLoading(true);
+    setLoadingMessage("Scraping link...");
+    setFetchingUrl(true);
+    const formEl = e.target;
+    const form = new FormData(formEl);
+    const { response, data } = await Workspace.uploadLink(
+      workspace.slug,
+      form.get("link")
+    );
+    if (!response.ok) {
+      showToast(`Error uploading link: ${data.error}`, "error");
+    } else {
+      fetchKeys(true);
+      showToast("Link uploaded successfully", "success");
+      formEl.reset();
+    }
+    setLoading(false);
+    setFetchingUrl(false);
   };
 
   // Don't spam fetchKeys, wait 1s between calls at least.
   const handleUploadSuccess = debounce(() => fetchKeys(true), 1000);
-  const handleUploadError = (msg) => showToast(msg, "error");
+  const handleUploadError = (_msg) => null; // stubbed.
 
   const onDrop = async (acceptedFiles, rejections) => {
-    const newAccepted = acceptedFiles.map((file) => ({
-      uid: v4(),
-      file,
-    }));
-
-    const newRejected = rejections.map((file) => ({
-      uid: v4(),
-      file: file.file,
-      rejected: true,
-      reason: file.errors[0].code,
-    }));
-
-    setFiles([...newAccepted, ...newRejected]);
-
-    rejections.forEach((file) => {
-      if (file.file.size > MAX_FILE_SIZE) {
-        if (file.file.type === 'audio/mpeg') {
-          showToast("File less than 20MB is allowed. Please split your audio into multiple parts. We recommend https://www.veed.io/tools/split-audio", "error");
-        } else {
-          showToast("Only files below 20MB are allowed.", "error");
-        }
-      } else if (!ALLOWED_FILE_TYPES.includes(file.file.type)) {
-        showToast("Only .txt, .csv, .mp3, and .pdf files are allowed.", "error");
-      }
+    const newAccepted = acceptedFiles.map((file) => {
+      return {
+        uid: v4(),
+        file,
+      };
     });
+    const newRejected = rejections.map((file) => {
+      return {
+        uid: v4(),
+        file: file.file,
+        rejected: true,
+        reason: file.errors[0].code,
+      };
+    });
+    setFiles([...newAccepted, ...newRejected]);
   };
 
   useEffect(() => {
@@ -73,13 +73,6 @@ export default function UploadFile({
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     disabled: !ready,
-    maxSize: MAX_FILE_SIZE,
-    accept: {
-      'text/plain': ['.txt'],
-      'text/csv': ['.csv'],
-      'audio/mpeg': ['.mp3'],
-      'application/pdf': ['.pdf']
-    },
   });
 
   return (
@@ -109,7 +102,7 @@ export default function UploadFile({
               Click to upload or drag and drop
             </div>
             <div className="text-white text-opacity-60 text-xs font-medium py-1">
-              Only .txt, .csv, .mp3, and .pdf files up to 20MB are supported
+              supports text files, csv's, spreadsheets, audio files, and more!
             </div>
           </div>
         ) : (
@@ -132,10 +125,29 @@ export default function UploadFile({
           </div>
         )}
       </div>
-      
+      <div className="text-center text-white text-opacity-50 text-xs font-medium w-[560px] py-2">
+        or submit a link
+      </div>
+      <form onSubmit={handleSendLink} className="flex gap-x-2">
+        <input
+          disabled={fetchingUrl}
+          name="link"
+          type="url"
+          className="disabled:bg-zinc-600 disabled:text-slate-300 bg-zinc-900 text-white placeholder:text-white/20 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-3/4 p-2.5"
+          placeholder={"https://example.com"}
+          autoComplete="off"
+        />
+        <button
+          disabled={fetchingUrl}
+          type="submit"
+          className="disabled:bg-white/20 disabled:text-slate-300 disabled:border-slate-400 disabled:cursor-wait bg bg-transparent hover:bg-slate-200 hover:text-slate-800 w-auto border border-white text-sm text-white p-2.5 rounded-lg"
+        >
+          {fetchingUrl ? "Fetching..." : "Fetch website"}
+        </button>
+      </form>
       <div className="mt-6 text-center text-white text-opacity-80 text-xs font-medium w-[560px]">
         These files will be uploaded to the document processor running on this
-        ChatLTT instance. These files are not sent or shared with a third
+        AnythingLLM instance. These files are not sent or shared with a third
         party.
       </div>
     </div>
